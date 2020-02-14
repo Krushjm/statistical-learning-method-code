@@ -53,10 +53,10 @@ class GaussianBayesianClassify:
 
 if __name__ == "__main__":
     iris = load_iris()
-    df = pd.DataFrame(iris.data, columns=iris.feature_names)
-    df['label'] = iris.target
-    df.columns = ['sepal length', 'sepal width', 'petal length', 'petal width', 'label']
-    data = np.array(df.iloc[:100, [0, 1, -1]])
+    iris_df = pd.DataFrame(iris.data, columns=iris.feature_names)
+    iris_df['label'] = iris.target
+    iris_df.columns = ['sepal length', 'sepal width', 'petal length', 'petal width', 'label']
+    data = np.array(iris_df.iloc[:100, [0, 1, -1]])
     X, y = data[:,:-1], data[:,-1]
     classify = GaussianBayesianClassify()
     classify.fit(X, y, np.array([5.9, 2.7]))
