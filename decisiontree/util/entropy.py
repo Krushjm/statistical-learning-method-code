@@ -30,13 +30,16 @@ def calc_feature_entropy(dataset, feature_name):
         feature_entropy += -(value_count / dataset_count) * log2(value_count / dataset_count)
     return round(feature_entropy, 3)
 
+def calc_expirical_entropy():
+    pass
+
 def calc_info_gain(dataset, feature_list):
     entropy = calc_entropy(dataset)
     info_gain = 0.0
     best_feature = None
     for feature_name in feature_list:
         current_info_gain = entropy - calc_conditional_entropy(dataset, feature_name)
-        print(feature_name, round(current_info_gain, 3))
+        # print(feature_name, round(current_info_gain, 3))
         if current_info_gain > info_gain:
             info_gain = current_info_gain
             best_feature = feature_name
@@ -48,7 +51,7 @@ def calc_info_gain_radio(dataset, feature_list):
     best_feature = None
     for feature_name in feature_list:
         current_info_gain_radio = (entropy - calc_conditional_entropy(dataset, feature_name)) / calc_feature_entropy(dataset, feature_name)
-        print(feature_name, round(current_info_gain_radio, 3))
+        # print(feature_name, round(current_info_gain_radio, 3))
         if current_info_gain_radio > info_gain_radio:
             info_gain_radio = current_info_gain_radio
             best_feature = feature_name
